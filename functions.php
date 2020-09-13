@@ -21,7 +21,6 @@ function connection () {
         exit();
     }
     else {
-        // echo "Подключение прошло успешно";
         mysqli_set_charset($con, "utf8mb4_unicode_ci");
         return $con;
     }
@@ -35,4 +34,17 @@ function get_categories ($con) {
     $categories_list = mysqli_fetch_all($res, MYSQLI_ASSOC);
     return $categories_list;
 }
-?>
+
+  function readPOST($key) {
+      if (isset($_POST[$key]) && $_POST[$key]) {
+        trim ($_POST[$key]);
+        if (empty($_POST[$key])) {
+            return NULL;
+        } else {
+            return $_POST[$key];
+        }
+      }
+      else {
+          return NULL;
+      };
+  }
